@@ -1,0 +1,40 @@
+# need 4 gpus
+
+project: coconut
+save_path: checkpoints
+name: gpt2_gsm8k_multimode
+
+only_eval: False
+
+# Multi-mode training settings
+multimode: True
+alpha: 1.0  # Latent loss weight
+beta: 1.0   # Verbalized loss weight
+gamma: 1.0  # Direct loss weight
+
+coconut: False  # Multimode handles this
+cot: False
+no_thoughts: False
+no_cot: False
+
+c_thought: 2
+epochs_per_stage: 3
+max_latent_stage: 3
+pad_latent_to_max: True
+
+save_only_improve: False
+uniform_prob: 0.0
+model_id: openai-community/gpt2
+load_model_path: None
+seed: 0
+resume: 0
+bf16: False
+train_path: data/gsm_original_train.json
+val_path: data/gsm_original_valid.json
+reset_optimizer: True
+batch_size_training: 32
+debug: False
+gradient_accumulation_steps: 1
+num_epochs: 50
+lr: !!float "1e-4"
+weight_decay: 0.01

@@ -1,0 +1,44 @@
+SAVE_DIR=models
+EXP_NAME=gpt2_prosqa_codi_multimode
+
+mkdir -p "$SAVE_DIR"
+
+cp scripts/train_gpt2_prosqa_codi_multimode.sh "$SAVE_DIR"
+
+python train.py \
+	--output_dir "$SAVE_DIR" \
+	--expt_name "$EXP_NAME" \
+	--logging_dir "$SAVE_DIR/$EXP_NAME/logs" \
+	--logging_steps 10 \
+	--model_name_or_path gpt2 \
+	--data_name prosqa \
+	--seed 11 \
+	--model_max_length 1024 \
+	--per_device_train_batch_size 32 \
+	--gradient_accumulation_steps 4 \
+	--bf16 \
+	--num_train_epochs 40 \
+	--learning_rate 3e-3 \
+	--max_grad_norm 2.0 \
+	--use_lora True \
+	--lora_r 128 --lora_alpha 32 --lora_init \
+	--save_strategy "epoch" \
+	--save_safetensors False \
+	--save_total_limit 1 \
+	--weight_decay 0.1 \
+	--warmup_ratio 0.03 \
+	--lr_scheduler_type "cosine" \
+	--do_train \
+	--report_to tensorboard \
+	--num_latent 6 \
+	--logging_strategy "steps" \
+	--use_prj True \
+	--prj_dim 768 \
+	--prj_dropout 0.0 \
+	--distill_loss_div_std True \
+	--exp_mode False \
+	--exp_data_num 2000 \
+	--remove_eos True \
+	--print_ref_model_stats True \
+	--train_direct_answer True \
+	--direct_loss_factor 1.0

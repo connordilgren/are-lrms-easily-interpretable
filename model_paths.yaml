@@ -1,0 +1,62 @@
+# Configuration for model checkpoint paths
+# Edit these paths to match your trained models before running run_all.sh
+#
+# Path conventions:
+#   - Local checkpoints: "checkpoints/{name}/checkpoint_XX"
+#   - HuggingFace: "zen-E/CODI-gpt2" (for published checkpoints)
+#
+# Set a path to null to skip that model during evaluation.
+
+gpt2:
+  model_id: "openai-community/gpt2"
+  gsm8k:
+    no_cot: null
+    cot: null
+    coconut: null
+    codi: null
+    multimode_coconut: null
+    multimode_codi: null
+  prontoqa:
+    no_cot: null
+    cot: null
+    coconut: null
+    codi: null
+    multimode_coconut: null
+    multimode_codi: null
+  prosqa:
+    no_cot: null
+    cot: null
+    coconut: null
+    codi: null
+    multimode_coconut: null
+    multimode_codi: null
+
+llama:
+  model_id: "meta-llama/Llama-3.2-1B-Instruct"
+  gsm8k:
+    no_cot: null
+    cot: null
+    coconut: null
+    codi: null
+    multimode_coconut: null
+    multimode_codi: null
+  prontoqa:
+    no_cot: null
+    cot: null
+    coconut: null
+    codi: null
+    multimode_coconut: null
+    multimode_codi: null
+  prosqa:
+    no_cot: null
+    cot: null
+    coconut: null
+    codi: null
+    multimode_coconut: null
+    multimode_codi: null
+
+# Dataset paths (relative to project root)
+datasets:
+  gsm8k: "data/gsm_original_test.json"
+  prontoqa: "data/prontoqa_test.json"
+  prosqa: "data/prosqa_test.json"
